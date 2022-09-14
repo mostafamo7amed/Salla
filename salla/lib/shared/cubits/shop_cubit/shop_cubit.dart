@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/models/change_favorites_model.dart';
 import 'package:salla/models/favorites_model.dart';
+import 'package:salla/models/login_model.dart';
 import 'package:salla/shared/cubits/shop_cubit/shop_states.dart';
 import '../../../models/category_model.dart';
 import '../../../models/home_model.dart';
@@ -26,7 +27,7 @@ class ShopCubit extends Cubit<ShopStates> {
     const HomeScreen(),
     const CategoryScreen(),
     const FavoriteScreen(),
-    const SettingsScreen(),
+    SettingsScreen(),
   ];
 
   void changeBottomNav(int index){
@@ -119,6 +120,24 @@ class ShopCubit extends Cubit<ShopStates> {
       emit(ShopSuccessGetFavoritesState());
     }).catchError((error){
       emit(ShopErrorGetFavoritesState());
+    });
+  }
+
+
+  LoginModel? userDataModel;
+  void getUserData(){
+    emit(ShopLoadingGetUserDataState());
+    DioHelper.getData(
+      url: PROFILE,
+      lang: 'en',
+      token: token,
+    ).then((value) {
+      //print(value.data.toString());
+      userDataModel = LoginModel.fromJson(value.data);
+      print(userDataModel!.data!.name);
+      emit(ShopSuccessGetUserDataState());
+    }).catchError((error){
+      emit(ShopErrorGetUserDataState());
     });
   }
 }

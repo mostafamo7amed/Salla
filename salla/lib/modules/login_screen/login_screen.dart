@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:salla/shared/components/constants.dart';
 import 'package:salla/shared/cubits/login_cubit/cubit.dart';
 import '../../layout/shop_layout.dart';
 import '../../shared/components/component.dart';
@@ -23,8 +24,10 @@ class LoginScreen extends StatelessWidget {
             if(state.loginModel.status!) {
               toast(message: state.loginModel.message!, data: ToastStates.success);
 
-              CacheHelper.saveData(key: 'token', data: state.loginModel.data!.token).then((value) {
+              CacheHelper.saveData(key: 'token', data: state.loginModel.data!.token)
+                  .then((value) {
                 print(CacheHelper.getData(key: 'token'));
+                token = state.loginModel.data!.token!;
                 navigateAndFinish(context, const ShopLayout());
               });
 
