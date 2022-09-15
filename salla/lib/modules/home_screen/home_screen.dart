@@ -94,12 +94,9 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Categories',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style:Theme.of(context).textTheme.bodyText1,
                   ),
                   const SizedBox(
                     height: 10,
@@ -121,12 +118,9 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
+                  Text(
                     'New Products',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style:Theme.of(context).textTheme.bodyText1,
                   ),
                 ],
               ),

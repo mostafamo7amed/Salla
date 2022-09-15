@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/layout/shop_layout.dart';
+import 'package:salla/shared/cubits/shop_cubit/shop_states.dart';
 import '../modules/boarding_screen/boarding_screen.dart';
 import '../modules/login_screen/login_screen.dart';
 import '../shared/cubits/shop_cubit/shop_cubit.dart';
@@ -38,20 +39,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool? isDark = CacheHelper.getDark(key: 'isDark');
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ShopCubit()
           ..getHomeData()..getCategoryData()
-          ..getFavorites()..getUserData(),
+          ..getFavorites()..getUserData()..changeTheme(fromShared: isDark),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.light,
-        home: widget,
+      child: BlocConsumer<ShopCubit,ShopStates>(
+        listener: (context, state) {
+
+        },
+        builder: (context, state) {
+          ShopCubit cubit = ShopCubit.getCubit(context);
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            themeMode: cubit.isDark? ThemeMode.dark:ThemeMode.light,
+            home: widget,
+          );
+        },
       ),
     );
   }
