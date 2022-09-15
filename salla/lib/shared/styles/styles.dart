@@ -2,15 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
-ThemeData lightTheme =  ThemeData(
+ThemeData lightTheme = ThemeData(
   fontFamily: 'Janna',
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
-      color: Colors.black,
-      fontWeight: FontWeight.bold,
-      fontSize: 18,
-    ),
-  ),
+      bodyText1: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+      ),
+      bodyText2: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+      button: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 14,
+      ),
+      caption: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      )),
   appBarTheme: const AppBarTheme(
     elevation: 0,
     titleSpacing: 20,
@@ -46,6 +60,21 @@ ThemeData darkTheme = ThemeData(
       color: Colors.white,
       fontWeight: FontWeight.bold,
       fontSize: 18,
+    ),
+    bodyText2: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+    ),
+    button: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    ),
+    caption: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 12,
     ),
   ),
   appBarTheme: AppBarTheme(

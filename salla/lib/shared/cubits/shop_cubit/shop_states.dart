@@ -1,4 +1,5 @@
 import 'package:salla/models/change_favorites_model.dart';
+import 'package:salla/models/login_model.dart';
 
 abstract class ShopStates {}
 
@@ -35,5 +36,10 @@ class ShopSuccessGetUserDataState extends ShopStates {}
 class ShopErrorGetUserDataState extends ShopStates {}
 
 class ShopLoadingUpdateUserDataState extends ShopStates {}
-class ShopSuccessUpdateUserDataState extends ShopStates {}
+class ShopSuccessUpdateUserDataState extends ShopStates {
+  LoginModel model;
+  ShopSuccessUpdateUserDataState(this.model);
+}
 class ShopErrorUpdateUserDataState extends ShopStates {}
+
+class ShopChangeThemeState extends ShopStates{}

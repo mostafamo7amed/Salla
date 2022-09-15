@@ -4,6 +4,7 @@ import 'package:salla/models/change_favorites_model.dart';
 import 'package:salla/models/favorites_model.dart';
 import 'package:salla/models/login_model.dart';
 import 'package:salla/shared/cubits/shop_cubit/shop_states.dart';
+import 'package:salla/shared/network/local/cache_helper/cache_helper.dart';
 import '../../../models/category_model.dart';
 import '../../../models/home_model.dart';
 import '../../../modules/category_screen/category_screen.dart';
@@ -152,9 +153,23 @@ class ShopCubit extends Cubit<ShopStates> {
       //print(value.data.toString());
       updateUserModel = LoginModel.fromJson(value.data);
       print(updateUserModel!.data!.toString());
-      emit(ShopSuccessUpdateUserDataState());
+      emit(ShopSuccessUpdateUserDataState(updateUserModel!));
     }).catchError((error) {
       emit(ShopErrorUpdateUserDataState());
+    });
+  }
+
+
+
+  bool isDark = false;
+  changeTheme({bool? fromShared}){
+    if(fromShared != null){
+      isDark = fromShared;
+    }else {
+      isDark = !isDark;
+    }
+    CacheHelper.setDark(key: 'isDark', isDark: isDark).then((value) {
+      emit(ShopChangeThemeState());
     });
   }
 }
