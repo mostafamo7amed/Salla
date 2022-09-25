@@ -36,6 +36,7 @@ class UpdateScreen extends StatelessWidget {
               child: Column(
                 children: [
                   defaultFormField(
+                    context: context,
                     controller: nameController,
                     label: 'User Name',
                     prefix: const Icon(Icons.person),
@@ -48,6 +49,7 @@ class UpdateScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10,),
                   defaultFormField(
+                    context: context,
                     controller: emailController,
                     label: 'Email Address',
                     prefix: const Icon(Icons.email),
@@ -60,6 +62,7 @@ class UpdateScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10,),
                   defaultFormField(
+                    context: context,
                     controller: phoneController,
                     label: 'Phone Number',
                     prefix: const Icon(Icons.phone),

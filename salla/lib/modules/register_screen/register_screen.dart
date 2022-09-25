@@ -72,6 +72,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 20,
                           ),
                           defaultFormField(
+                            context: context,
                             label: 'User Name',
                             prefix: const Icon(Icons.person),
                             controller: nameController,
@@ -87,6 +88,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 15.0,
                           ),
                           defaultFormField(
+                            context: context,
                             label: 'Email Address',
                             prefix: const Icon(Icons.email),
                             controller: emailController,
@@ -102,6 +104,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 15.0,
                           ),
                           defaultFormField(
+                              context: context,
                               controller: passwordController,
                               label: 'Password',
                               prefix: const Icon(Icons.lock),
@@ -123,6 +126,7 @@ class RegisterScreen extends StatelessWidget {
                             height: 15.0,
                           ),
                           defaultFormField(
+                            context: context,
                             label: 'Phone',
                             prefix: const Icon(Icons.phone),
                             controller: phoneController,

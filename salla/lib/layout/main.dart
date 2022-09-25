@@ -48,9 +48,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: BlocConsumer<ShopCubit,ShopStates>(
-        listener: (context, state) {
-
-        },
+        listener: (context, state) { },
         builder: (context, state) {
           ShopCubit cubit = ShopCubit.getCubit(context);
           return MaterialApp(
@@ -72,6 +70,6 @@ class MyHttpOverrides extends HttpOverrides{
   @override
   HttpClient createHttpClient(SecurityContext? context){
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
   }
 }

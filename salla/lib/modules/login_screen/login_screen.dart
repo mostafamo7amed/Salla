@@ -69,6 +69,7 @@ class LoginScreen extends StatelessWidget {
                             height: 20,
                           ),
                           defaultFormField(
+                            context: context,
                             label: 'Email Address',
                             prefix: const Icon(Icons.email),
                             controller: emailController,
@@ -84,6 +85,7 @@ class LoginScreen extends StatelessWidget {
                             height: 15.0,
                           ),
                           defaultFormField(
+                              context: context,
                               controller: passwordController,
                               label: 'Password',
                               prefix: const Icon(Icons.lock),
