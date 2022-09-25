@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salla/layout/shop_layout.dart';
 import 'package:salla/shared/cubits/shop_cubit/shop_states.dart';
-import '../modules/boarding_screen/boarding_screen.dart';
-import '../modules/login_screen/login_screen.dart';
-import '../shared/cubits/shop_cubit/shop_cubit.dart';
-import '../shared/network/local/cache_helper/cache_helper.dart';
-import '../shared/network/remote/dio_helper/dio_helper.dart';
-import '../shared/observer/blocObserver.dart';
-import '../shared/styles/styles.dart';
+import 'modules/boarding_screen/boarding_screen.dart';
+import 'modules/login_screen/login_screen.dart';
+import 'shared/cubits/shop_cubit/shop_cubit.dart';
+import 'shared/network/local/cache_helper/cache_helper.dart';
+import 'shared/network/remote/dio_helper/dio_helper.dart';
+import 'shared/observer/blocObserver.dart';
+import 'shared/styles/styles.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,10 +20,13 @@ void main() async{
   Widget widget;
   if(CacheHelper.getData(key: 'onBoarding')!=null){
     print(CacheHelper.getData(key: 'token'));
-    if(CacheHelper.getData(key: 'token')!=null){
-      widget = const ShopLayout();
+    print('on boarding');
+    if(CacheHelper.getData(key: 'token')== null){
+      print('login');
+      widget = LoginScreen();
     }else{
-      widget =LoginScreen();
+      print('home');
+      widget = const ShopLayout();
     }
   }else{
     widget = const OnBoardingScreen();

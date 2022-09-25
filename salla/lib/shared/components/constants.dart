@@ -5,7 +5,7 @@ import 'package:skeleton_text/skeleton_text.dart';
 import '../../modules/login_screen/login_screen.dart';
 import '../network/local/cache_helper/cache_helper.dart';
 
-String token = CacheHelper.getData(key: 'token');
+String token = '';
 
 
 
