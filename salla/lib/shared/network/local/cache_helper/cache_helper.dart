@@ -5,6 +5,7 @@ class CacheHelper {
 
   static init() async {
     sharedPreferences = await SharedPreferences.getInstance() ;
+    print('cache -------------');
   }
 
   static Future<bool> setDark({
