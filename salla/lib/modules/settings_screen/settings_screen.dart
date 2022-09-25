@@ -19,81 +19,84 @@ class SettingsScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         ShopCubit cubit = ShopCubit.getCubit(context);
-        return Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  navigateTo(context, UpdateScreen());
-                },
-                child: Row(
-                  children: const [
-                    Icon(Icons.person,
-                    size: 35,
-                    color: Colors.blue,),
-                    SizedBox(width: 10,),
-                    Text('Update Profile',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 1.0,
-                  color: Colors.grey[300],
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  //dark mode
-                  cubit.changeTheme();
-                },
-                child: Row(
-                  children: const [
-                    Icon(Icons.brightness_4_outlined,
+        return SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    navigateTo(context, UpdateScreen());
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.person,
                       size: 35,
                       color: Colors.blue,),
-                    SizedBox(width: 10,),
-                    Text('Dark Mode',
-                      style: TextStyle(
-                        fontSize: 20,
+                      SizedBox(width: 10,),
+                      Text('Update Profile',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 1.0,
-                  color: Colors.grey[300],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 1.0,
+                    color: Colors.grey[300],
+                  ),
                 ),
-              ),
-              InkWell(
-                onTap: () {
-                  signOut(context);
-                },
-                child: Row(
-                  children: [
-                    const Icon(Icons.exit_to_app,
-                      size: 35,
-                      color: Colors.blue,),
-                    const SizedBox(width: 10,),
-                    Text('Logout',
-                      style:Theme.of(context).textTheme.bodyText2,
-                    ),
-                  ],
+                InkWell(
+                  onTap: () {
+                    //dark mode
+                    cubit.changeTheme();
+                  },
+                  child: Row(
+                    children: const [
+                      Icon(Icons.brightness_4_outlined,
+                        size: 35,
+                        color: Colors.blue,),
+                      SizedBox(width: 10,),
+                      Text('Dark Mode',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 1.0,
+                    color: Colors.grey[300],
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    signOut(context);
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.exit_to_app,
+                        size: 35,
+                        color: Colors.blue,),
+                      const SizedBox(width: 10,),
+                      Text('Logout',
+                        style:Theme.of(context).textTheme.bodyText2,
+                      ),
+                    ],
+                  ),
+                ),
 
-            ],
+              ],
+            ),
           ),
         );
       },
